@@ -47,4 +47,40 @@ public class LoginImplements implements LoginInterface{
             JOptionPane.showMessageDialog(null,"Error occured while registering a login user");
         }
     }
+    
+    @Override
+    public void loginUser(Login user){
+        int userIdentityId;
+     try{
+         Connection conn = databaseConnection.getConnection();
+         String query = "SELECT userSpecId ,userName ,userPass FROM loginTbl WHERE userName=? AND userPass=?";
+         PreparedStatement ps = conn.prepareStatement(query);
+         ps.setString(1,user.getUserName());
+         ps.setString(2,user.getUserPass());
+         ResultSet rs = ps.executeQuery();
+         if(rs.next()){
+             userIdentityId = rs.getInt("userSpecId");
+             if(userIdentityId == 0){
+                 //moving to student course registeration form
+                JOptionPane.showMessageDialog(null,"Congratulations you are successfully logged in as a student!!" );
+             }
+             else if(userIdentityId == 1){
+                 //moving to faculty panel 
+                JOptionPane.showMessageDialog(null,"Congratulations you are successfully logged in as a faculty!!" );
+             }
+             else{
+                 //moving to admin panel
+                JOptionPane.showMessageDialog(null,"Congratulations you are successfully logged in as an Admin !!" );
+             }
+             
+         }
+         else{
+            JOptionPane.showMessageDialog(null, "Invalid credentials!");
+         }
+         
+     }   
+     catch(ClassNotFoundException | SQLException exp){
+          JOptionPane.showMessageDialog(null,"Sorry for the inconvenience please try again later!");
+     }
+    }
 }
