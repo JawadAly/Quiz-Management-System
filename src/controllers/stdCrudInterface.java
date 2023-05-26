@@ -12,7 +12,7 @@ import models.Student;
  */
 public interface stdCrudInterface {
     public void stdInsert(Student std);
-//    public void stdUpdatePass(Student std);
+    public int getStdId(Student std);
 //    public void stdStruckOff(Student std);
 //    public List<Student> getRegtdStdntsList();
 }

@@ -12,5 +12,7 @@ import models.Login;
  */
 public interface LoginInterface {
     public void registerUserLogin(Login usr);
-    public void loginUser(Login user);
+    public int loginUser(Login user);
+    public void uppdateUserPass(Login usr);
+    public int getLoginUserId(Login usr);
 }

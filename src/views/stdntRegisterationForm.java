@@ -236,9 +236,12 @@ public class stdntRegisterationForm extends javax.swing.JFrame {
                 //creating object of stdCrudImplements using reference of stdCrudInterface
                 stdCrudInterface stdImp = new stdCrudImplements();
                 stdImp.stdInsert(std);
+                int stdId = stdImp.getStdId(std);
+                
                 //also inserting user in login table as we are implementing multi-authentication system
                 //creating object of login class
                 Login usr = new Login(stdUserName,stdPass);
+                usr.setUser_Orig_Tbl_Id(stdId);
                 //creating object of LoginImplements using reference of LoginInterface
                 LoginInterface lgn = new LoginImplements();
                 lgn.registerUserLogin(usr);
@@ -277,9 +280,12 @@ public class stdntRegisterationForm extends javax.swing.JFrame {
                 //creating object of stdCrudImplements using reference of stdCrudInterface
                 stdCrudInterface stdImp = new stdCrudImplements();
                 stdImp.stdInsert(std);
+                int stdId = stdImp.getStdId(std);
+                
                 //also inserting user in login table as we are implementing multi-authentication system
                 //creating object of login class
                 Login usr = new Login(stdUserName,stdPass);
+                usr.setUser_Orig_Tbl_Id(stdId);
                 //creating object of LoginImplements using reference of LoginInterface
                 LoginInterface lgn = new LoginImplements();
                 lgn.registerUserLogin(usr);

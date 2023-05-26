@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import models.Login;
 import models.Student;
 
 /**
@@ -49,5 +50,25 @@ public class stdCrudImplements implements stdCrudInterface{
         catch(HeadlessException | ClassNotFoundException | SQLException exp){
             JOptionPane.showMessageDialog(null,"There was an error executing insert operation for student.");
         }
+    }
+    @Override
+    public int getStdId(Student std){
+        int stdId = 0;
+     try{
+         Connection conn = databaseConnection.getConnection();
+         String query = "SELECT std_id FROM stdntTbl WHERE stdName=? AND stdEmail=?";
+         PreparedStatement ps = conn.prepareStatement(query);
+         ps.setString(1,std.getStdName());
+         ps.setString(2,std.getStdEmail());
+         ResultSet rs = ps.executeQuery();
+         if(rs.next()){
+             stdId = rs.getInt("std_id");
+         }
+         
+     } 
+     catch(Exception exp){
+         JOptionPane.showMessageDialog(null,"Student Id not found");
+     }
+     return stdId;
     }
 }

@@ -10,8 +10,10 @@ package models;
  */
 public class Login {
     private int user_id;
+    private int user_Orig_Tbl_Id;
     private String userName;
     private String userPass;
+    private String userNewPass;
     public Login(){} 
     
     public Login(String userName,String userPass){
@@ -42,4 +44,20 @@ public class Login {
     public void setUserPass(String userPass) {
         this.userPass = userPass;
     }
+    public String getNewPass() {
+        return userNewPass;
+    }
+
+    public void setNewPass(String userNewPass) {
+        this.userNewPass = userNewPass;
+    }
+    public int getUser_Orig_Tbl_Id() {
+        return user_Orig_Tbl_Id;
+    }
+
+    public void setUser_Orig_Tbl_Id(int user_Orig_Tbl_Id) {
+        this.user_Orig_Tbl_Id = user_Orig_Tbl_Id;
+    }
+    
+    
 }
