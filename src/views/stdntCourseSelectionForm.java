@@ -4,7 +4,16 @@
  */
 package views;
 
+import controllers.courseImplements;
+import controllers.courseInterface;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import models.Course;
+import models.Student;
 import static views.stdntPanel.userOrigTblId;
 
 /**
@@ -17,14 +26,36 @@ public class stdntCourseSelectionForm extends javax.swing.JFrame {
      * Creates new form stdntCourseSelectionForm
      */
     public static int stdId;
+    private static List<Course> coursesList;
+    private static List<String> myCoursesTitleList;
+    private static List<Course> currentStdntsCourseList;
     public stdntCourseSelectionForm() {
         initComponents();
         setStdId();
+        coursesList = new ArrayList<>();
+        myCoursesTitleList = new ArrayList<>();
+        currentStdntsCourseList = new ArrayList<>();
+        getCourseListDB();
     }
     public static void setStdId(){
         stdntCourseSelectionForm.stdId = userOrigTblId;
     }
-    
+    public void getCourseListDB(){
+        courseInterface interfc = new courseImplements();
+        coursesList = interfc.getAllCoursesList();
+//        populateCourseList();
+        DefaultTableModel dft = (DefaultTableModel)allCourseTable.getModel();
+        for(Course singleCourse:coursesList){
+            dft.addRow(new Object[]{singleCourse.getCourseId(),singleCourse.getCourseTitle(),singleCourse.getCourseMarks(),singleCourse.getCourseCreditHrs()});
+        }
+    }
+//    public void populateCourseList(){
+//        DefaultListModel <Course> listModel = new DefaultListModel<Course>(); 
+//        for(Course singleCourse:coursesList){
+//            listModel.addElement(singleCourse);
+//        }
+//        stdntsCoursesList.setModel(listModel);
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,6 +71,14 @@ public class stdntCourseSelectionForm extends javax.swing.JFrame {
         stdntCourseRegPanelCloseBtn = new javax.swing.JLabel();
         testingBtn = new javax.swing.JButton();
         btnBackToStudentPanel = new javax.swing.JLabel();
+        btnAddCourse = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        allCourseTable = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        myCoursesList = new javax.swing.JList<>();
+        jLabel5 = new javax.swing.JLabel();
+        btnFinalizeCourses = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Course Registeration Form");
@@ -81,22 +120,76 @@ public class stdntCourseSelectionForm extends javax.swing.JFrame {
             }
         });
 
+        btnAddCourse.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnAddCourse.setForeground(new java.awt.Color(25, 118, 211));
+        btnAddCourse.setText(">>");
+        btnAddCourse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddCourseActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Available Courses");
+
+        allCourseTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Course_Id", "Course_Title", "Course_Marks", "Course_CreditHrs"
+            }
+        ));
+        jScrollPane2.setViewportView(allCourseTable);
+
+        myCoursesList.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jScrollPane1.setViewportView(myCoursesList);
+
+        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("My Courses");
+
+        btnFinalizeCourses.setText("Finalize My Courses");
+        btnFinalizeCourses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizeCoursesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(btnBackToStudentPanel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(stdntCourseRegPanelCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBackToStudentPanel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stdntCourseRegPanelCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(testingBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(35, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnAddCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnFinalizeCourses)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(testingBtn)
-                .addGap(292, 292, 292))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,17 +199,39 @@ public class stdntCourseSelectionForm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(stdntCourseRegPanelCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnBackToStudentPanel))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(126, 126, 126)
-                .addComponent(testingBtn)
-                .addContainerGap(181, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(testingBtn)))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAddCourse)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addComponent(btnFinalizeCourses)
+                        .addContainerGap(71, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 429, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,6 +255,37 @@ public class stdntCourseSelectionForm extends javax.swing.JFrame {
         this.dispose();
         stdPnl.setVisible(true);
     }//GEN-LAST:event_btnBackToStudentPanelMouseClicked
+
+    private void btnAddCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCourseActionPerformed
+        //getting selected row index
+        int rowIndex = allCourseTable.getSelectedRow();
+        //getting table model
+        TableModel tblModel = allCourseTable.getModel();
+        //extracting selected row courseId from table
+        int selectedCourseId = (int)tblModel.getValueAt(rowIndex,0);  
+        String selectedCourseTitle = tblModel.getValueAt(rowIndex,1).toString(); 
+        //now showing those selected courses in my courses list
+        myCoursesTitleList.add(selectedCourseTitle);
+        DefaultListModel <String> listModel = new DefaultListModel<String>(); 
+        for(String singleCourseTitle:myCoursesTitleList){
+            listModel.addElement(singleCourseTitle);
+        }
+        myCoursesList.setModel(listModel);
+        //creating a course object with selected id from table then adding it to currentStdntsCoursesList
+        Course crse = new Course();
+        crse.setCourseId(selectedCourseId);
+        currentStdntsCourseList.add(crse);
+//        JOptionPane.showMessageDialog(null, selectedCourseId);
+    }//GEN-LAST:event_btnAddCourseActionPerformed
+
+    private void btnFinalizeCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeCoursesActionPerformed
+        //creating stdnt object and handing over the list selected courses by the student along with its student id to insert in courses table
+        Student std = new Student();
+        std.setStdId(stdntCourseSelectionForm.stdId);
+        std.assignStdCourse(currentStdntsCourseList);
+        courseInterface interfce = new courseImplements();
+        interfce.registerStdCourses(std);
+    }//GEN-LAST:event_btnFinalizeCoursesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,9 +323,17 @@ public class stdntCourseSelectionForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable allCourseTable;
+    private javax.swing.JButton btnAddCourse;
     private javax.swing.JLabel btnBackToStudentPanel;
+    private javax.swing.JButton btnFinalizeCourses;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> myCoursesList;
     private javax.swing.JLabel stdntCourseRegPanelCloseBtn;
     private javax.swing.JButton testingBtn;
     // End of variables declaration//GEN-END:variables

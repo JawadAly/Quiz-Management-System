@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/models/Course.java</file>
             <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/views/facRegisterationForm.java</file>
+            <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/controllers/courseInterface.java</file>
             <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/views/stdntRegisterationForm.java</file>
             <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/controllers/LoginInterface.java</file>
             <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/views/passChangeForm.java</file>
@@ -16,7 +17,9 @@
             <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/controllers/stdCrudImplements.java</file>
             <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/views/stdntPanel.java</file>
             <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/views/stdntCourseSelectionForm.java</file>
+            <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/controllers/courseImplements.java</file>
             <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/models/Faculty.java</file>
+            <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/models/Quiz.java</file>
             <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/controllers/facCrudImplements.java</file>
             <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/dbConnection/databaseConnection.java</file>
             <file>file:/C:/Users/Noman%20Traders/OneDrive/Documents/NetBeansProjects/Quiz_Management_System/src/models/PermFaculty.java</file>
