@@ -37,6 +37,9 @@ public class Student {
     public void setStdId(int stdId) {
         this.stdId = stdId;
     }
+     public int getStdId() {
+        return stdId;
+    }
 
     public void setStdName(String stdName) {
         this.stdName = stdName;

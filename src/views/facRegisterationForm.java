@@ -11,6 +11,7 @@ import controllers.facCrudInterface;
 import controllers.stdCrudImplements;
 import controllers.stdCrudInterface;
 import javax.swing.JOptionPane;
+import models.Faculty;
 import models.Login;
 import models.PermFaculty;
 import models.Student;
@@ -38,15 +39,8 @@ public class facRegisterationForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        txtStdName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtStdEmail = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtStdPhone = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        btnMale = new javax.swing.JRadioButton();
-        btnFemale = new javax.swing.JRadioButton();
+        facGenderBtnGroup = new javax.swing.ButtonGroup();
+        facTypeBtnGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -56,8 +50,8 @@ public class facRegisterationForm extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtFacPhone = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        btnMale1 = new javax.swing.JRadioButton();
-        btnFemale1 = new javax.swing.JRadioButton();
+        btnMale = new javax.swing.JRadioButton();
+        btnFemale = new javax.swing.JRadioButton();
         jLabel26 = new javax.swing.JLabel();
         txtFacUsername = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
@@ -69,31 +63,9 @@ public class facRegisterationForm extends javax.swing.JFrame {
         btnPermanent = new javax.swing.JRadioButton();
         btnVisiting = new javax.swing.JRadioButton();
         yearsOfService = new javax.swing.JLabel();
-        txtFacName1 = new javax.swing.JTextField();
+        txtFacName = new javax.swing.JTextField();
         hoursWorked = new javax.swing.JLabel();
         txtHoursWorked = new javax.swing.JTextField();
-
-        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Name");
-
-        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Email");
-
-        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Phone");
-
-        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Gender");
-
-        btnMale.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnMale.setText("Male");
-
-        btnFemale.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnFemale.setText("Female");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,11 +89,13 @@ public class facRegisterationForm extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Gender");
 
-        btnMale1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnMale1.setText("Male");
+        facGenderBtnGroup.add(btnMale);
+        btnMale.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnMale.setText("Male");
 
-        btnFemale1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnFemale1.setText("Female");
+        facGenderBtnGroup.add(btnFemale);
+        btnFemale.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnFemale.setText("Female");
 
         jLabel26.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -146,6 +120,7 @@ public class facRegisterationForm extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         jLabel10.setText("Faculty Type");
 
+        facTypeBtnGroup.add(btnPermanent);
         btnPermanent.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnPermanent.setText("Permanent");
         btnPermanent.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +129,7 @@ public class facRegisterationForm extends javax.swing.JFrame {
             }
         });
 
+        facTypeBtnGroup.add(btnVisiting);
         btnVisiting.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnVisiting.setText("Visiting");
         btnVisiting.addActionListener(new java.awt.event.ActionListener() {
@@ -196,9 +172,9 @@ public class facRegisterationForm extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(btnMale1)
+                                                .addComponent(btnMale)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnFemale1))
+                                                .addComponent(btnFemale))
                                             .addComponent(txtFacPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel10)
@@ -209,7 +185,7 @@ public class facRegisterationForm extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtFacName1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtFacName, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(114, 114, 114)
                         .addComponent(yearsOfService)
@@ -230,7 +206,7 @@ public class facRegisterationForm extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnFacRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +229,7 @@ public class facRegisterationForm extends javax.swing.JFrame {
                             .addComponent(txtFacUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtFacName1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtFacName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,14 +241,14 @@ public class facRegisterationForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMale1)
-                    .addComponent(btnFemale1))
+                    .addComponent(btnMale)
+                    .addComponent(btnFemale))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(btnPermanent)
                     .addComponent(btnVisiting))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(yearsOfService)
                     .addComponent(txtYearsOfService, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -292,21 +268,18 @@ public class facRegisterationForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFacRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacRegisterActionPerformed
-        String facName = txtYearsOfService.getText();
+        String facName = txtFacName.getText();
         String facEmail = txtFacEmail.getText();
         String facPhone = txtFacPhone.getText();
         String facUsername = txtFacUsername.getText();
@@ -314,7 +287,7 @@ public class facRegisterationForm extends javax.swing.JFrame {
         String facHoursWorked = txtHoursWorked.getText();
         String facGender;
         String facType;
-        if (btnMale1.isSelected()) {
+        if (btnMale.isSelected()) {
             facGender="Male";
         }
         else {
@@ -322,47 +295,67 @@ public class facRegisterationForm extends javax.swing.JFrame {
         }
         String facPass = String.valueOf(txtFacPass.getPassword());
         String facConfirmPass = String.valueOf(txtFacConfirmPass.getPassword());
-        //FOR PERMANENT FACULTY
-        if (btnPermanent.isSelected()) {
-            facType="Permanent";
-            if(facName.isEmpty() || facEmail.isEmpty() || facPhone.isEmpty() || (!btnMale1.isSelected() && !btnFemale1.isSelected()) || (!btnVisiting.isSelected() && !btnPermanent.isSelected()) || facUsername.isEmpty() || facPass.isEmpty() || facConfirmPass.isEmpty() || (facYearsOfService.isEmpty() && facHoursWorked.isEmpty())){
-            JOptionPane.showMessageDialog(null, "Please fill out the required fields!");
+        if(facName.isEmpty() || facEmail.isEmpty() || facPhone.isEmpty() || (!btnMale.isSelected() && !btnFemale.isSelected()) || (!btnPermanent.isSelected() && !btnVisiting.isSelected()) || facUsername.isEmpty() || facPass.isEmpty() || facConfirmPass.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please fill out the required credentials!");
         }
-        else
-        {
-            if(!(facPass.equals(facConfirmPass))){
-                JOptionPane.showMessageDialog(null, "Error: Passwords do not match!", "Password Mismatch", JOptionPane.ERROR_MESSAGE);
+        else{
+            //FOR PERMANENT FACULTY
+            if (btnPermanent.isSelected()) {
+                facType="Permanent";
+            
+                if(facYearsOfService.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please fill out the years of service field!");
+                }
+                else
+                {
+                    if(!(facPass.equals(facConfirmPass))){
+                        JOptionPane.showMessageDialog(null, "Error: Passwords do not match!", "Password Mismatch", JOptionPane.ERROR_MESSAGE);
+                    }
+                    else{
+                        PermFaculty pfac = new PermFaculty(facYearsOfService, facName, facEmail, facPhone, facGender, facType);
+                        facCrudInterface pfacImp = new facCrudImplements();
+                        pfacImp.permfacInsert(pfac);
+                        //inserting record in login table as well to implement multiauth
+                        //first getting user original table id to insert into login table
+                        int originalTblId = pfacImp.getPermfacId(pfac);
+                        Login usr = new Login(facUsername,facPass);
+                        usr.setUser_Orig_Tbl_Id(originalTblId);
+                        usr.setUserSpecId(1);//fixed specId for faculty as 1
+                        //now inserting using login interface and the class that implements it
+                        LoginInterface lgnInter = new LoginImplements();
+                        lgnInter.registerUserLogin(usr);
+                    }
+                } 
             }
-            else{
-                PermFaculty pfac = new PermFaculty(facYearsOfService, facName, facEmail, facPhone, facGender, facType);
-                facCrudInterface pfacImp = new facCrudImplements();
-                pfacImp.permfacInsert(pfac);
+        //FOR VISITING FACULTY
+        else{
+            facType="Visiting";
+            if(facHoursWorked.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please fill out the hours worked field!");
             }
+            else
+            {
+                if(!(facPass.equals(facConfirmPass))){
+                    JOptionPane.showMessageDialog(null, "Error: Passwords do not match!", "Password Mismatch", JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                    VisitingFaculty vfac = new VisitingFaculty(facHoursWorked, facName, facEmail, facPhone, facGender, facType);
+                    facCrudInterface vfacImp = new facCrudImplements();
+                    vfacImp.visitfacInsert(vfac);
+                    //inserting record in login table as well to implement multiauth
+                    //first getting user original table id to insert into login table
+                    int originalTblId = vfacImp.getVisitFacId(vfac);
+                    Login usr = new Login(facUsername,facPass);
+                    usr.setUser_Orig_Tbl_Id(originalTblId);
+                    usr.setUserSpecId(1);//fixed specId for faculty as 1
+                    //now inserting using login interface and the class that implements it
+                    LoginInterface lgnInter = new LoginImplements();
+                    lgnInter.registerUserLogin(usr);
+                }
             } 
         }
-        //FOR VISITING FACULTY
-        else if (btnVisiting.isSelected()) {
-            facType="Visiting";
-            if(facName.isEmpty() || facEmail.isEmpty() || facPhone.isEmpty() || (!btnMale1.isSelected() && !btnFemale1.isSelected()) || (!btnVisiting.isSelected() && !btnPermanent.isSelected()) || facUsername.isEmpty() || facPass.isEmpty() || facConfirmPass.isEmpty() || (facYearsOfService.isEmpty() && facHoursWorked.isEmpty())){
-            JOptionPane.showMessageDialog(null, "Please fill out the required fields!");
+            
         }
-        else
-        {
-            if(!(facPass.equals(facConfirmPass))){
-                JOptionPane.showMessageDialog(null, "Error: Passwords do not match!", "Password Mismatch", JOptionPane.ERROR_MESSAGE);
-            }
-            else{
-                VisitingFaculty vfac = new VisitingFaculty(facHoursWorked, facName, facEmail, facPhone, facGender, facType);
-                facCrudInterface vfacImp = new facCrudImplements();
-                vfacImp.visitfacInsert(vfac);
-            }
-        } 
-    }
-    
-        
-       
-        
-
             
         
     }//GEN-LAST:event_btnFacRegisterActionPerformed
@@ -370,11 +363,15 @@ public class facRegisterationForm extends javax.swing.JFrame {
     private void btnPermanentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPermanentActionPerformed
             txtHoursWorked.setEnabled(false);
             hoursWorked.setEnabled(false);
+            txtYearsOfService.setEnabled(true);
+            yearsOfService.setEnabled(true);
     }//GEN-LAST:event_btnPermanentActionPerformed
 
     private void btnVisitingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitingActionPerformed
             txtYearsOfService.setEnabled(false);
             yearsOfService.setEnabled(false);
+            txtHoursWorked.setEnabled(true);
+            hoursWorked.setEnabled(true);
     }//GEN-LAST:event_btnVisitingActionPerformed
 
     public static void main(String args[]) {
@@ -413,36 +410,29 @@ public class facRegisterationForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFacRegister;
     private javax.swing.JRadioButton btnFemale;
-    private javax.swing.JRadioButton btnFemale1;
     private javax.swing.JRadioButton btnMale;
-    private javax.swing.JRadioButton btnMale1;
     private javax.swing.JRadioButton btnPermanent;
     private javax.swing.JRadioButton btnVisiting;
+    private javax.swing.ButtonGroup facGenderBtnGroup;
+    private javax.swing.ButtonGroup facTypeBtnGroup;
     private javax.swing.JLabel hoursWorked;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtFacConfirmPass;
     private javax.swing.JTextField txtFacEmail;
-    private javax.swing.JTextField txtFacName1;
+    private javax.swing.JTextField txtFacName;
     private javax.swing.JPasswordField txtFacPass;
     private javax.swing.JTextField txtFacPhone;
     private javax.swing.JTextField txtFacUsername;
     private javax.swing.JTextField txtHoursWorked;
-    private javax.swing.JTextField txtStdEmail;
-    private javax.swing.JTextField txtStdName;
-    private javax.swing.JTextField txtStdPhone;
     private javax.swing.JTextField txtYearsOfService;
     private javax.swing.JLabel yearsOfService;
     // End of variables declaration//GEN-END:variables

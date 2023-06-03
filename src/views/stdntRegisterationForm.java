@@ -35,7 +35,7 @@ public class stdntRegisterationForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        stdGenderBtnGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -103,11 +103,11 @@ public class stdntRegisterationForm extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Phone");
 
-        buttonGroup1.add(btnMale);
+        stdGenderBtnGroup.add(btnMale);
         btnMale.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnMale.setText("Male");
 
-        buttonGroup1.add(btnFemale);
+        stdGenderBtnGroup.add(btnFemale);
         btnFemale.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnFemale.setText("Female");
 
@@ -242,6 +242,7 @@ public class stdntRegisterationForm extends javax.swing.JFrame {
                 //creating object of login class
                 Login usr = new Login(stdUserName,stdPass);
                 usr.setUser_Orig_Tbl_Id(stdId);
+                usr.setUserSpecId(0);//fixes specId for stdnt as 0
                 //creating object of LoginImplements using reference of LoginInterface
                 LoginInterface lgn = new LoginImplements();
                 lgn.registerUserLogin(usr);
@@ -286,6 +287,7 @@ public class stdntRegisterationForm extends javax.swing.JFrame {
                 //creating object of login class
                 Login usr = new Login(stdUserName,stdPass);
                 usr.setUser_Orig_Tbl_Id(stdId);
+                usr.setUserSpecId(0);//fixed specId for stdnt as 0
                 //creating object of LoginImplements using reference of LoginInterface
                 LoginInterface lgn = new LoginImplements();
                 lgn.registerUserLogin(usr);
@@ -333,7 +335,6 @@ public class stdntRegisterationForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton btnFemale;
     private javax.swing.JRadioButton btnMale;
     private javax.swing.JButton btnStdRegister;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -343,6 +344,7 @@ public class stdntRegisterationForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.ButtonGroup stdGenderBtnGroup;
     private javax.swing.JPasswordField txtStdConfirmPass;
     private javax.swing.JTextField txtStdEmail;
     private javax.swing.JTextField txtStdName;

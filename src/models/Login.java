@@ -11,6 +11,7 @@ package models;
 public class Login {
     private int user_id;
     private int user_Orig_Tbl_Id;
+    private int userSpecId;
     private String userName;
     private String userPass;
     private String userNewPass;
@@ -28,7 +29,13 @@ public class Login {
     public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
+    public int getUserSpecId() {
+        return userSpecId;
+    }
 
+    public void setUserSpecId(int userSpecId) {
+        this.userSpecId = userSpecId;
+    }
     public String getUserName() {
         return userName;
     }

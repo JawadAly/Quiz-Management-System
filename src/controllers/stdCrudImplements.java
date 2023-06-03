@@ -71,4 +71,26 @@ public class stdCrudImplements implements stdCrudInterface{
      }
      return stdId;
     }
+    @Override
+    public int getStdVerifStatus(Student std){
+        int verifStatusId = 0;
+        try{
+            Connection conn = databaseConnection.getConnection();
+            String query = "SELECT stdntApprovalStatus FROM stdntTbl WHERE std_id=?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1,std.getStdId());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                if(rs.getString("stdntApprovalStatus").equals("Approved")){
+                    verifStatusId = 1;
+                }
+            }
+            
+        }
+        catch(Exception exp){
+            exp.printStackTrace();
+//            JOptionPane.showMessageDialog(null,"Error getting student verification status.");
+        }
+        return verifStatusId;
+    }
 }

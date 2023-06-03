@@ -32,11 +32,12 @@ public class LoginImplements implements LoginInterface{
                 alreadyRegtd = true;
             }
             if(alreadyRegtd == false){
-                String query1 = "INSERT INTO loginTbl (userOrigTblId,userName,userPass) VALUES (?,?,?)";
+                String query1 = "INSERT INTO loginTbl (userSpecId,userOrigTblId,userName,userPass) VALUES (?,?,?,?)";
                 PreparedStatement ps1 = conn.prepareStatement(query1);
-                ps1.setInt(1,usr.getUser_Orig_Tbl_Id());
-                ps1.setString(2,usr.getUserName());
-                ps1.setString(3,usr.getUserPass());
+                ps1.setInt(1,usr.getUserSpecId());
+                ps1.setInt(2,usr.getUser_Orig_Tbl_Id());
+                ps1.setString(3,usr.getUserName());
+                ps1.setString(4,usr.getUserPass());
                 ps1.executeUpdate();
             }
             else{

@@ -10,4 +10,6 @@ import models.VisitingFaculty;
 public interface facCrudInterface {
     public void visitfacInsert(VisitingFaculty vfac);
     public void permfacInsert(PermFaculty pfac);
+    public int getPermfacId(PermFaculty pfac);
+    public int getVisitFacId(VisitingFaculty vfac);
 }

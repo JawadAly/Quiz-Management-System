@@ -7,9 +7,12 @@ package views;
 
 import controllers.LoginImplements;
 import controllers.LoginInterface;
+import controllers.stdCrudImplements;
+import controllers.stdCrudInterface;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import models.Login;
+import models.Student;
 
 /**
  *
@@ -247,20 +250,24 @@ public class login extends javax.swing.JFrame {
             userOrigTblId = intrface.getLoginUserId(user);
 //            JOptionPane.showMessageDialog(null,userOrigTblId);
             if(userLoginStatusId == 0){
-                 //moving to student course registeration form
-//                JOptionPane.showMessageDialog(null,"Congratulations you are successfully logged in as a student!!" );
-                  stdntCourseRegForm courseRegForm = new stdntCourseRegForm();
-                  courseRegForm.setUserOriginalTableId(userOrigTblId);
-                  this.setVisible(false);
-                  courseRegForm.setVisible(true);
+                //checking stdnt verification status
+                  checkStdntVerifStatus(userOrigTblId);
+//                  stdntPanel courseRegForm = new stdntPanel();
+//                  courseRegForm.setUserOriginalTableId(userOrigTblId);
+//                  this.setVisible(false);
+//                  courseRegForm.setVisible(true);
              }
              else if(userLoginStatusId == 1){
                  //moving to faculty panel 
                 JOptionPane.showMessageDialog(null,"Congratulations you are successfully logged in as a faculty!!" );
              }
+             else if(userLoginStatusId == 2){
+                 //moving to faculty panel 
+                JOptionPane.showMessageDialog(null,"Congratulations you are successfully logged in as an Admin !!" );
+             }
              else{
                  //moving to admin panel
-                JOptionPane.showMessageDialog(null,"Congratulations you are successfully logged in as an Admin !!" );
+                JOptionPane.showMessageDialog(null,"Invalid Credentials !" );
              }
 
         }
@@ -291,6 +298,25 @@ public class login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSignUpMouseClicked
 
+    private void checkStdntVerifStatus(int stdorigTblId){
+        Student std = new Student();
+        std.setStdId(stdorigTblId);
+        stdCrudInterface interfc = new stdCrudImplements();
+        int verifStatusId = interfc.getStdVerifStatus(std);
+        if(verifStatusId == 0){
+            //if not a verified stdnt then an errro message
+            JOptionPane.showMessageDialog(null, "Your status is still pending by admin to verify please be patient and try again after some time");         
+        }
+        else{
+            //if a verified stdnt then sendin to stdnt panel with stdOrigTblId
+            //moving to student panel form
+                stdntPanel stdPnl = new stdntPanel();
+                stdPnl.setUserOriginalTableId(stdorigTblId);
+                this.setVisible(false);
+                stdPnl.setVisible(true);
+        }
+        
+    }
     private void btnForgotPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnForgotPassMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnForgotPassMouseClicked
