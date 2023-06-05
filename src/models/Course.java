@@ -16,7 +16,7 @@ public class Course {
     private String courseTitle;
     private int courseMarks;
     private int courseCreditHrs;
-    private List<Quiz> courseQuizzes;
+//    private List<Quiz> courseQuizzes;
     
     public Course(){}
     
@@ -25,7 +25,7 @@ public class Course {
         this.courseMarks = courseMarks;
         this.courseCreditHrs = courseCreditHrs;
         //initializing courseQuizzes list at the time of object creation of course class
-        courseQuizzes = new ArrayList<>();
+//        courseQuizzes = new ArrayList<>();
     }
     public int getCourseId() {
         return courseId;
@@ -57,7 +57,10 @@ public class Course {
     public void setCourseCreditHrs(int courseCreditHrs) {
         this.courseCreditHrs = courseCreditHrs;
     }       
-    public void addQuizztoCourseList(Quiz quiz){
-        this.courseQuizzes.add(quiz);
-    }
+//    public void addQuizztoCourseList(Quiz quiz){
+//        this.courseQuizzes.add(quiz);
+//    }
+//    public List<Quiz> getCourseQuizzesList(){
+//        return courseQuizzes;
+//    }
 }

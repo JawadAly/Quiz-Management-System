@@ -274,6 +274,7 @@ public class stdntCourseSelectionForm extends javax.swing.JFrame {
         //creating a course object with selected id from table then adding it to currentStdntsCoursesList
         Course crse = new Course();
         crse.setCourseId(selectedCourseId);
+        crse.setCourseTitle(selectedCourseTitle);
         currentStdntsCourseList.add(crse);
 //        JOptionPane.showMessageDialog(null, selectedCourseId);
     }//GEN-LAST:event_btnAddCourseActionPerformed

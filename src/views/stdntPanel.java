@@ -45,6 +45,7 @@ public class stdntPanel extends javax.swing.JFrame {
         btnStdntCourseRegFormOpen = new javax.swing.JButton();
         btnStdQuizPanelOpen = new javax.swing.JButton();
         btnLogOut = new javax.swing.JLabel();
+        btnShowStudentRegCourses = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Panel Form");
@@ -94,6 +95,14 @@ public class stdntPanel extends javax.swing.JFrame {
             }
         });
 
+        btnShowStudentRegCourses.setText("My Courses");
+        btnShowStudentRegCourses.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnShowStudentRegCourses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowStudentRegCoursesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -102,16 +111,21 @@ public class stdntPanel extends javax.swing.JFrame {
                 .addGap(181, 181, 181)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnStdntCourseRegFormOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115)
-                        .addComponent(btnStdQuizPanelOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                         .addComponent(btnLogOut)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(stdntPanelCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(stdntPanelCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnStdntCourseRegFormOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(115, 115, 115)
+                                .addComponent(btnStdQuizPanelOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(281, 281, 281)
+                                .addComponent(btnShowStudentRegCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -127,7 +141,9 @@ public class stdntPanel extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnStdntCourseRegFormOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnStdQuizPanelOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addGap(102, 102, 102)
+                .addComponent(btnShowStudentRegCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,6 +183,12 @@ public class stdntPanel extends javax.swing.JFrame {
         lgn.setVisible(true);
     }//GEN-LAST:event_btnLogOutMouseClicked
 
+    private void btnShowStudentRegCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowStudentRegCoursesActionPerformed
+        MyCoursesPanel coursesPnl = new MyCoursesPanel(); 
+        this.setVisible(false);
+        coursesPnl.setVisible(true);
+    }//GEN-LAST:event_btnShowStudentRegCoursesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -205,6 +227,7 @@ public class stdntPanel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnLogOut;
+    private javax.swing.JButton btnShowStudentRegCourses;
     private javax.swing.JButton btnStdQuizPanelOpen;
     private javax.swing.JButton btnStdntCourseRegFormOpen;
     private javax.swing.JLabel jLabel3;

@@ -4,6 +4,8 @@
  */
 package controllers;
 
+import java.util.List;
+import models.Course;
 import models.Student;
 
 /**
@@ -14,6 +16,7 @@ public interface stdCrudInterface {
     public void stdInsert(Student std);
     public int getStdId(Student std);
     public int getStdVerifStatus(Student std);
+    public List<Course> loadStdCourses(Student std);
 //    public void stdStruckOff(Student std);
 //    public List<Student> getRegtdStdntsList();
 }

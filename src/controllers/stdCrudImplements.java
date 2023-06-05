@@ -10,7 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import models.Course;
 import models.Login;
 import models.Student;
 
@@ -92,5 +95,28 @@ public class stdCrudImplements implements stdCrudInterface{
 //            JOptionPane.showMessageDialog(null,"Error getting student verification status.");
         }
         return verifStatusId;
+    }
+    @Override 
+    public List<Course> loadStdCourses(Student std){
+        List<Course> myCoursesList = new ArrayList<>();
+        try{
+            Connection conn = databaseConnection.getConnection();
+            String query = "SELECT courseTitle,courseMarks,courseCrdtHrs FROM courseTbl JOIN stdCoursesTbl ON courseTbl.courseId = stdCoursesTbl.stdntCourseId WHERE stdntId = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1,std.getStdId());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Course crse = new Course();
+                crse.setCourseTitle(rs.getString("courseTitle"));
+                crse.setCourseMarks(rs.getInt("courseMarks"));
+                crse.setCourseCreditHrs(rs.getInt("courseCrdtHrs"));
+                myCoursesList.add(crse);
+            }
+        }
+        catch(ClassNotFoundException | SQLException exp){
+            exp.printStackTrace();
+//            JOptionPane.showMessageDialog(null, "Error loading student courses.");
+        }
+        return myCoursesList;
     }
 }

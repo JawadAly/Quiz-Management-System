@@ -44,13 +44,23 @@ public void registerStdCourses(Student std){
         try{
                 for(Course singleCourse:std.getStdntCourses()){
                     Connection conn = databaseConnection.getConnection();
-                    String query = "INSERT INTO stdCoursesTbl (stdntId,stdntCourseId) VALUES (?,?)";
+                    String query = "SELECT stdntCourseId FROM stdCoursesTbl WHERE stdntId=? AND stdntCourseId=?";
                     PreparedStatement ps = conn.prepareStatement(query);
-                    ps.setInt(1, std.getStdId());
+                    ps.setInt(1,std.getStdId());
                     ps.setInt(2,singleCourse.getCourseId());
-                    ps.executeUpdate();                    
+                    ResultSet rs = ps.executeQuery();
+                    if(rs.next()){
+                        JOptionPane.showMessageDialog(null,"You,ve been already registered int the course "+ singleCourse.getCourseTitle() +" you've selected");
+                    }
+                    else{
+                        String query1 = "INSERT INTO stdCoursesTbl (stdntId,stdntCourseId) VALUES (?,?)";
+                        PreparedStatement ps1 = conn.prepareStatement(query1);
+                        ps1.setInt(1, std.getStdId());
+                        ps1.setInt(2,singleCourse.getCourseId());
+                        ps1.executeUpdate();                    
+                            JOptionPane.showMessageDialog(null, "Congratilations! you've successfully enrolled in "+singleCourse.getCourseTitle());
+                    }
                 }
-                JOptionPane.showMessageDialog(null, "Congratilations! you've successfully registered your courses.");
         }
         catch(Exception exp){
             exp.printStackTrace();
