@@ -170,18 +170,25 @@ public class QuizAdditionPanel extends javax.swing.JFrame {
     }
     private void btnProceedtoQuestionAdditionPnlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedtoQuestionAdditionPnlActionPerformed
         String selectedCBoxValue = quizCourseSelectionCmbobox.getSelectedItem().toString();
-        char firstChar = selectedCBoxValue.charAt(0);
-        int selectedCourseId = Character.getNumericValue(firstChar);
         //getting quiz title and converting it into upperCase
         String quizTitle = txtQuizTitle.getText().toUpperCase();
-        //creating quiz object
-        Quiz quiz = new Quiz(selectedCourseId,quizTitle);
-        //inserting using quiz interface and class that implements it
-        quizInterface interfce = new quizImplements();
-        interfce.addQuiz(quiz);
-        //updating next quiz id
-        getQuizIdDb();
-//        JOptionPane.showMessageDialog(null,selectedCourseId);
+        if(selectedCBoxValue.isEmpty() || quizTitle.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please fill out the required fields.");
+        }
+        else{
+            char firstChar = selectedCBoxValue.charAt(0);
+            int selectedCourseId = Character.getNumericValue(firstChar);
+            //creating quiz object
+            Quiz quiz = new Quiz(selectedCourseId,quizTitle);
+            //inserting using quiz interface and class that implements it
+            quizInterface interfce = new quizImplements();
+            interfce.addQuiz(quiz);
+            QuizQuestionAdditionPanel pnl = new QuizQuestionAdditionPanel();
+            this.setVisible(false);
+            pnl.setVisible(true);
+    //        JOptionPane.showMessageDialog(null,selectedCourseId);
+        }
+        
     }//GEN-LAST:event_btnProceedtoQuestionAdditionPnlActionPerformed
     
     private void loadAllCoursesComboBox(){

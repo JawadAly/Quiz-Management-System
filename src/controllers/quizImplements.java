@@ -9,6 +9,7 @@ import dbConnection.databaseConnection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import models.Course;
+import models.Question;
 import models.Quiz;
 
 /**
@@ -60,5 +61,28 @@ public class quizImplements implements quizInterface{
             exp.printStackTrace();
 //            JOptionPane.showMessageDialog(null,"Error adding quiz!");
         }
+    }
+    @Override
+    public void addQuizQuestions(Quiz quiz){
+        try{
+            for(Question singleQuestion:quiz.getQuizQuestionList()){
+                Connection conn = databaseConnection.getConnection();
+                String query = "INSERT INTO questionTbl (quizId,questionMain,option1,option2,option3,option4,answer) VALUES (?,?,?,?,?,?,?)";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setInt(1,quiz.getQuizId());
+                ps.setString(2,singleQuestion.getQuestionMain());
+                ps.setString(3,singleQuestion.getFirstOpt());
+                ps.setString(4,singleQuestion.getSecondOpt());
+                ps.setString(5,singleQuestion.getThirdOpt());
+                ps.setString(6,singleQuestion.getFourthOpt());
+                ps.setString(7,singleQuestion.getAnswer());
+                ps.executeUpdate();
+            }
+            JOptionPane.showMessageDialog(null,"Your quiz was successfully submitted with all the questions you added.");
+        }
+        catch(Exception exp){
+            JOptionPane.showMessageDialog(null, "Error adding quiz questions!");
+        }
+        
     }
 }

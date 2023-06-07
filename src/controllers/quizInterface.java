@@ -13,4 +13,5 @@ import models.Quiz;
 public interface quizInterface {
     public int getQuizIdDb();
     public void addQuiz(Quiz quiz);
+    public void addQuizQuestions(Quiz quiz);
 }

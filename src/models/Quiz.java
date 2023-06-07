@@ -45,7 +45,10 @@ public class Quiz {
     public void setQuizTitle(String quizTitle) {
         this.quizTitle = quizTitle;
     }
-    public void addQuestionListToQuiz(List<Question> questionList){
+    public void addQuestionsListToQuiz(List<Question> questionList){
         this.questionsList = questionList;
+    }
+    public List<Question> getQuizQuestionList(){
+        return questionsList;
     }
 }
