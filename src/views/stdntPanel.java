@@ -6,6 +6,7 @@ package views;
 
 import controllers.stdCrudImplements;
 import controllers.stdCrudInterface;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import models.Login;
 import models.Student;
@@ -150,7 +151,7 @@ public class stdntPanel extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,9 +173,27 @@ public class stdntPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStdntCourseRegFormOpenActionPerformed
 
     private void btnStdQuizPanelOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStdQuizPanelOpenActionPerformed
-        studentQuizPanel quizPnl = new studentQuizPanel();
-        this.setVisible(false);
-        quizPnl.setVisible(true);
+        String[] quizPanelOptions = {"Select Quiz Panel","Available Quizzes","Attempted Quizzes"};
+          //initializing JComboBox by above densed array
+          JComboBox quizPanelSelectCBox = new JComboBox(quizPanelOptions);
+          //now getting input from JOptionPaneDialog
+          int comboBoxRep = JOptionPane.showConfirmDialog(null, quizPanelSelectCBox,"Quiz Panel Selection",JOptionPane.DEFAULT_OPTION);
+          if(comboBoxRep == JOptionPane.OK_OPTION){
+              //now getting comboBoxInput as a String
+              String cBoxValue = quizPanelSelectCBox.getSelectedItem().toString();
+              if(cBoxValue.equals("Select Quiz Panel")){
+                  JOptionPane.showMessageDialog(null,"Please select a quiz panel to open!","Quiz Panel Selection",JOptionPane.INFORMATION_MESSAGE);
+              }
+              else if(cBoxValue.equals("Available Quizzes")){
+                  stdntAvailableQuizzes availQuiz = new stdntAvailableQuizzes();
+                  this.setVisible(false);
+                  availQuiz.setVisible(true);
+              }
+              else{
+                  //attempted quizzes panel opens here
+              }
+              
+          }
     }//GEN-LAST:event_btnStdQuizPanelOpenActionPerformed
 
     private void btnLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogOutMouseClicked

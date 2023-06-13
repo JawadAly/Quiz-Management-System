@@ -22,7 +22,7 @@ public class QuizQuestionAdditionPanel extends javax.swing.JFrame {
      * Creates new form QuizQuestionAdditionPanel
      */
     public static int currentQuizId;
-    private static int questionId = 1;
+    static int questionId = 1;
     //private questionList
     private static List<Question> qsList;
     public QuizQuestionAdditionPanel() {
@@ -290,7 +290,7 @@ public class QuizQuestionAdditionPanel extends javax.swing.JFrame {
             opt4 = txtOpt4.getText().toUpperCase();
             answer = txtAnswer.getText().toUpperCase();
             if(questionMain.isEmpty() || opt1.isEmpty() || opt2.isEmpty() || opt3.isEmpty() || opt4.isEmpty() || answer.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Pleasefill out the required fields.");
+                JOptionPane.showMessageDialog(null, "Please fill out the required fields");
             }
             else{
                 //creating question object

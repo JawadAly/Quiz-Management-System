@@ -4,13 +4,19 @@
  */
 package controllers;
 
+import com.microsoft.sqlserver.jdbc.ISQLServerCallableStatement;
 import java.sql.*;
 import dbConnection.databaseConnection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import models.Course;
 import models.Question;
 import models.Quiz;
+import models.Student;
 
 /**
  *
@@ -85,4 +91,82 @@ public class quizImplements implements quizInterface{
         }
         
     }
+
+    @Override
+    public List<Question> displayQuizForStd(Quiz quiz) {
+        List<Question> questionList = new ArrayList<>();
+        try{
+                Connection conn = databaseConnection.getConnection();
+                String query = "SELECT questionMain, option1, option2, option3, option4, answer FROM questionTbl where quizId=?";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setInt(1,quiz.getQuizId());
+                ResultSet rs = ps.executeQuery(); 
+                while(rs.next()){
+                    Question ques = new Question();
+                    ques.setQuestionMain(rs.getString("questionMain"));
+                    ques.setFirstOpt(rs.getString("option1"));
+                    ques.setSecondOpt(rs.getString("option2"));
+                    ques.setThirdOpt(rs.getString("option3"));
+                    ques.setFourthOpt(rs.getString("option4"));
+                    ques.setAnswer(rs.getString("answer"));
+                    questionList.add(ques);
+                }
+        } catch (SQLException ex) { 
+            Logger.getLogger(quizImplements.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(quizImplements.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return questionList;
+    }    
+
+    @Override
+    public int getQuizIdFromQuizTbl(Quiz quiz) {
+        //getting quiz id from quiz table            if(rs.next()){
+
+        int quiz_Id=0;
+        try{
+            Connection conn = databaseConnection.getConnection();
+            String query = "SELECT quizId FROM quizTbl WHERE quiz_Title=?";
+            PreparedStatement ps = conn.prepareStatement(query);
+//            ps.setInt(1,quiz.getQuizCourseId());
+            ps.setString(1,quiz.getQuizTitle());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                quiz_Id = rs.getInt("quizId");    
+            }
+        }
+        catch(Exception exp){
+         exp.printStackTrace();
+     }
+        return quiz_Id;    
+    }
+   
+        
+
+    @Override
+    public List<Quiz> diplayingAvailableQuizForStd(Student std) {
+        List<Quiz> quizList = new ArrayList<>();
+        try{
+            Connection conn = databaseConnection.getConnection();
+            String query = "SELECT * FROM quizTbl WHERE quizId NOT IN (SELECT quizId FROM quizAttemptTbl WHERE stdntId = ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1,std.getStdId());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Quiz quiz = new Quiz();
+                quiz.setQuizId(rs.getInt("quizId"));
+                quiz.setQuizCourseId(rs.getInt("quizCourseId"));
+                quiz.setQuizTitle(rs.getString("quiz_Title"));
+                quizList.add(quiz);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(quizImplements.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(quizImplements.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return quizList;
+    }
 }
+
+
+  

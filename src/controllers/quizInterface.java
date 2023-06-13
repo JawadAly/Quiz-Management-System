@@ -4,7 +4,10 @@
  */
 package controllers;
 
+import java.util.List;
+import models.Question;
 import models.Quiz;
+import models.Student;
 
 /**
  *
@@ -14,4 +17,7 @@ public interface quizInterface {
     public int getQuizIdDb();
     public void addQuiz(Quiz quiz);
     public void addQuizQuestions(Quiz quiz);
+    public List<Question> displayQuizForStd(Quiz quiz);
+    public int getQuizIdFromQuizTbl(Quiz quiz);
+    public List<Quiz> diplayingAvailableQuizForStd(Student std);
 }
