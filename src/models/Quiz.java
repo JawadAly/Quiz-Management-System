@@ -15,6 +15,7 @@ public class Quiz {
     private int quizCourseId;
     private String quizTitle;
     private List<Question> questionsList;
+    private int quizObtMarks;
 
     public Quiz(){}
     
@@ -44,6 +45,13 @@ public class Quiz {
 
     public void setQuizTitle(String quizTitle) {
         this.quizTitle = quizTitle;
+    }
+    public int getQuizObtMarks() {
+        return quizObtMarks;
+    }
+
+    public void setQuizObtMarks(int quizObtMarks) {
+        this.quizObtMarks = quizObtMarks;
     }
     public void addQuestionsListToQuiz(List<Question> questionList){
         this.questionsList = questionList;

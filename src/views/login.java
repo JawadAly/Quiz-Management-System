@@ -7,10 +7,13 @@ package views;
 
 import controllers.LoginImplements;
 import controllers.LoginInterface;
+import controllers.facCrudImplements;
+import controllers.facCrudInterface;
 import controllers.stdCrudImplements;
 import controllers.stdCrudInterface;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import models.Faculty;
 import models.Login;
 import models.Student;
 
@@ -259,7 +262,8 @@ public class login extends javax.swing.JFrame {
              }
              else if(userLoginStatusId == 1){
                  //moving to faculty panel 
-                JOptionPane.showMessageDialog(null,"Congratulations you are successfully logged in as a faculty!!" );
+//                JOptionPane.showMessageDialog(null,"Congratulations you are successfully logged in as a faculty!!" );
+                  checkFacVerificationStatus(userOrigTblId);
              }
              else if(userLoginStatusId == 2){
                  //moving to faculty panel 
@@ -274,18 +278,21 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnSignUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignUpMouseClicked
-        String signUpOptions[] = {"Admin","Faculty","Student"};
+        String signUpOptions[] = {"Select Reg Designation","Faculty","Student"};
         //creating a Jcombobox
         JComboBox signUpComboBox = new JComboBox(signUpOptions);
         //now creating a JOptionPane with comboBox
         int comboBoxInput = JOptionPane.showConfirmDialog(this,signUpComboBox,"Registeration Selection" ,JOptionPane.DEFAULT_OPTION);
         if(comboBoxInput == JOptionPane.OK_OPTION){
             String userRep = signUpComboBox.getSelectedItem().toString();
-            if(userRep.equals("Admin")){
-                //adminRegisteration form opens here
+            if(userRep.equals("Select Reg Designation")){
+                JOptionPane.showMessageDialog(null,"Please select a designation to register!");
             }
             else if(userRep.equals("Faculty")){
                 //faculty Registeration form opens here
+                facRegisterationForm facReg = new facRegisterationForm();
+                this.dispose();
+                facReg.setVisible(true);
             }
             else{
                 //student Registeration form opens here
@@ -316,6 +323,21 @@ public class login extends javax.swing.JFrame {
                 stdPnl.setVisible(true);
         }
         
+    }
+    private void checkFacVerificationStatus(int userOrigTblId){
+        //creating faculty class object as this is super class of both faculties
+        Faculty fac = new Faculty();
+        fac.setFacId(userOrigTblId);
+        facCrudInterface interfc = new facCrudImplements();
+        int verificationStatusId = interfc.getFacVerificationStatus(fac);
+        if(verificationStatusId == 0){
+            JOptionPane.showMessageDialog(null,"Sorry! your status is still pending by admin to verify as a faculty");
+        }
+        else{
+            FacultyPanel facPnl = new FacultyPanel();
+            this.dispose();
+            facPnl.setVisible(true);
+        }
     }
     private void btnForgotPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnForgotPassMouseClicked
         // TODO add your handling code here:

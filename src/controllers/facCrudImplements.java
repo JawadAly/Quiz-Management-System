@@ -10,10 +10,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import models.Faculty;
 import models.PermFaculty;
+import models.Quiz;
+import models.Student;
+import models.StudentsResult;
 import models.VisitingFaculty;
 
 /**
@@ -129,5 +135,49 @@ public class facCrudImplements implements facCrudInterface{
             JOptionPane.showMessageDialog(null,"Error getting original faculty id from faculty table");
         }
         return visitFacId;
+    }
+    @Override
+    public int getFacVerificationStatus(Faculty faculty){
+        int facVerifStatus = 0;
+        try{
+            Connection conn = databaseConnection.getConnection();
+            String query = "SELECT facApprovalStatus FROM facTbl WHERE facId=?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1,faculty.getFacId());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                if(rs.getString("facApprovalStatus").equals("Approved")){
+                    facVerifStatus = 1;
+                }
+            }
+        }
+        catch(Exception exp){
+            JOptionPane.showMessageDialog(null,"Error checking faculty verification status!");
+        }
+        return facVerifStatus;
+    }
+    @Override
+    public List<StudentsResult> getStdntsResultList(){
+        List<StudentsResult> stdntsResultList = new ArrayList<>();
+        try{
+            Connection conn = databaseConnection.getConnection();
+            String query = "SELECT quizTbl.quiz_Title,stdntTbl.stdName,stdntTbl.stdPhone,quizAttemptTbl.quizMarks FROM stdntTbl INNER JOIN quizAttemptTbl ON quizAttemptTbl.stdntId = stdntTbl.std_id INNER JOIN quizTbl ON quizTbl.quizId = quizAttemptTbl.quizId";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Quiz quiz = new Quiz();
+                quiz.setQuizTitle(rs.getString("quiz_Title"));
+                quiz.setQuizObtMarks(rs.getInt("quizMarks"));
+                Student std = new Student();
+                std.setStdName(rs.getString("stdName"));
+                std.setStdPhone(rs.getString("stdPhone"));
+                StudentsResult stdResult = new StudentsResult(std,quiz);
+                stdntsResultList.add(stdResult);
+            }
+        }
+        catch(Exception exp){
+            JOptionPane.showMessageDialog(null,"Error loading students result");
+        }
+        return stdntsResultList;
     }
 }

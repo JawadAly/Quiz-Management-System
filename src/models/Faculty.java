@@ -16,6 +16,8 @@ public class Faculty {
     private String facGender;
     private String facStatus;
 
+    public Faculty(){}
+    
     public Faculty(String facName, String facEmail, String facPhone, String facGender, String facStatus) {
         this.facName = facName;
         this.facEmail = facEmail;

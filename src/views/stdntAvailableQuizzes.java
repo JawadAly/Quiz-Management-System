@@ -135,7 +135,11 @@ public class stdntAvailableQuizzes extends javax.swing.JFrame {
 
     private void attemptQuizBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attemptQuizBtnActionPerformed
         int rowIndex = availQuizzesTbl.getSelectedRow();
-        //getting table model
+        if(rowIndex < 0){
+            JOptionPane.showMessageDialog(null, "Please select a quiz from the available quizzes to proceed further!");
+        }
+        else{
+            //getting table model
         TableModel tblModel = availQuizzesTbl.getModel();
         //extracting selected row courseId from table
         String selectedQuizTitle = (String)availQuizzesTbl.getValueAt(rowIndex,1);  
@@ -143,11 +147,13 @@ public class stdntAvailableQuizzes extends javax.swing.JFrame {
         Quiz quiz = new Quiz();
         quiz.setQuizTitle(selectedQuizTitle);
         quizInterface interfc = new quizImplements();
-        stdntAvailableQuizzes.selectedQuizId = interfc.getQuizIdFromQuizTbl(quiz);
+        stdntAvailableQuizzes.selectedQuizId = interfc.getQuizIdFromQuizTbl(quiz);  
 //                JOptionPane.showMessageDialog(null, selectedQuizId);
         studentQuizPanel quizPnl = new studentQuizPanel();
         this.setVisible(false);
         quizPnl.setVisible(true);
+        }
+        
     }//GEN-LAST:event_attemptQuizBtnActionPerformed
 
     /**

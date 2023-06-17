@@ -7,6 +7,9 @@ package models;
 public class PermFaculty extends Faculty{
     private String yearsOfService;
     
+    public PermFaculty(){
+        super();
+    }
 
     public PermFaculty(String yearsOfService, String facName, String facEmail, String facPhone, String facGender, String facStatus) {
         super(facName, facEmail, facPhone, facGender, facStatus);

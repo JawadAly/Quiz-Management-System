@@ -278,7 +278,7 @@ public class QuizQuestionAdditionPanel extends javax.swing.JFrame {
     private void btnAddQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddQuestionActionPerformed
         String questionMain,opt1,opt2,opt3,opt4,answer;
         //incrementing question id
-        if(QuizQuestionAdditionPanel.questionId < 11){
+        if(QuizQuestionAdditionPanel.questionId <= 5){
             QuizQuestionAdditionPanel.questionId++;
             //updating question id
             setQuestionId();
@@ -297,7 +297,7 @@ public class QuizQuestionAdditionPanel extends javax.swing.JFrame {
                 Question qs = new Question(questionMain,opt1,opt2,opt3,opt4,answer);
                 //adding this question object to questionList
                 qsList.add(qs);
-                JOptionPane.showMessageDialog(null,"Question "+QuizQuestionAdditionPanel.questionId+" successfully added ! now add other question until question count reaches 10.");
+                JOptionPane.showMessageDialog(null,"Question "+(QuizQuestionAdditionPanel.questionId-1)+" successfully added ! now add other question until question count reaches 10.");
                 //emptying textfields for next question
                 txtQuestion.setText("");
                 txtOpt1.setText("");
@@ -308,13 +308,13 @@ public class QuizQuestionAdditionPanel extends javax.swing.JFrame {
             }
         }
         else{
-            JOptionPane.showMessageDialog(null,"You can only add 10 questions for a single quiz!");
+            JOptionPane.showMessageDialog(null,"You can only add 5 questions for a single quiz!");
         }
     }//GEN-LAST:event_btnAddQuestionActionPerformed
 
     private void btnSubmitQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitQuizActionPerformed
         //checking for 10 complete questions or else cant finalize quiz
-        if(QuizQuestionAdditionPanel.questionId > 10){
+        if(QuizQuestionAdditionPanel.questionId == 6){
             Quiz quiz = new Quiz();
             quiz.setQuizId(QuizQuestionAdditionPanel.currentQuizId);
             quiz.addQuestionsListToQuiz(QuizQuestionAdditionPanel.qsList);
@@ -324,7 +324,7 @@ public class QuizQuestionAdditionPanel extends javax.swing.JFrame {
             
         }
         else{
-            JOptionPane.showMessageDialog(null,"Please add complete 10 questions to finalize you quiz !");
+            JOptionPane.showMessageDialog(null,"Please add complete 5 questions to finalize you quiz !");
         }
     }//GEN-LAST:event_btnSubmitQuizActionPerformed
 

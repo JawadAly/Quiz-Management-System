@@ -4,10 +4,15 @@
  */
 package views;
 
+import controllers.courseImplements;
+import controllers.courseInterface;
 import controllers.stdCrudImplements;
 import controllers.stdCrudInterface;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import models.Course;
 import models.Login;
 import models.Student;
 
@@ -190,7 +195,10 @@ public class stdntPanel extends javax.swing.JFrame {
                   availQuiz.setVisible(true);
               }
               else{
-                  //attempted quizzes panel opens here
+                  //course selection panel for attempted quizzes opens here
+                  CourseSelectionPanel coursePanel = new CourseSelectionPanel();
+                  this.setVisible(false);
+                  coursePanel.setVisible(true);
               }
               
           }

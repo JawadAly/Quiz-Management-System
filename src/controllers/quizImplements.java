@@ -166,6 +166,44 @@ public class quizImplements implements quizInterface{
         }
         return quizList;
     }
+    
+    @Override
+    public void addAttemptedStdntQuiz(Quiz quiz,Student std){
+        try{
+            Connection conn = databaseConnection.getConnection();
+            String query = "INSERT INTO quizAttemptTbl (quizId,stdntId,quizMarks) VALUES (?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1,quiz.getQuizId());
+            ps.setInt(2,std.getStdId());
+            ps.setInt(3,quiz.getQuizObtMarks());
+            ps.executeUpdate();
+        }
+        catch(Exception exp){
+            JOptionPane.showMessageDialog(null,"Error adding an attemted quiz for current student!");
+        }
+    }
+    @Override
+    public List<Quiz> stdAttemptedQuizzesList(Student stdnt,Course course){
+        List<Quiz> attemtedQuizzesList = new ArrayList<>();
+        try{
+            Connection conn = databaseConnection.getConnection();
+            String query = "SELECT quizTbl.quiz_Title,quizAttemptTbl.quizMarks FROM quizTbl INNER JOIN quizAttemptTbl on quizTbl.quizId = quizAttemptTbl.quizId WHERE quizTbl.quizCourseId = ? AND quizTbl.quizId IN (SELECT quizId FROM quizAttemptTbl WHERE stdntId = ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1,course.getCourseId());
+            ps.setInt(2,stdnt.getStdId());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Quiz quiz = new Quiz();
+                quiz.setQuizTitle(rs.getString("quiz_Title"));
+                quiz.setQuizObtMarks(rs.getInt("quizMarks"));
+                attemtedQuizzesList.add(quiz);
+            }
+        }
+        catch(Exception exp){
+            
+        }
+        return attemtedQuizzesList;
+    }
 }
 
 

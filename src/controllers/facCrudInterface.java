@@ -4,7 +4,10 @@
  */
 package controllers;
 
+import java.util.List;
+import models.Faculty;
 import models.PermFaculty;
+import models.StudentsResult;
 import models.VisitingFaculty;
 
 public interface facCrudInterface {
@@ -12,4 +15,6 @@ public interface facCrudInterface {
     public void permfacInsert(PermFaculty pfac);
     public int getPermfacId(PermFaculty pfac);
     public int getVisitFacId(VisitingFaculty vfac);
+    public int getFacVerificationStatus(Faculty faculty);
+    public List<StudentsResult> getStdntsResultList();
 }

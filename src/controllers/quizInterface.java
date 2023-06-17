@@ -5,6 +5,7 @@
 package controllers;
 
 import java.util.List;
+import models.Course;
 import models.Question;
 import models.Quiz;
 import models.Student;
@@ -20,4 +21,6 @@ public interface quizInterface {
     public List<Question> displayQuizForStd(Quiz quiz);
     public int getQuizIdFromQuizTbl(Quiz quiz);
     public List<Quiz> diplayingAvailableQuizForStd(Student std);
+    public void addAttemptedStdntQuiz(Quiz quiz,Student std);
+    public List<Quiz> stdAttemptedQuizzesList(Student stdnt,Course course);
 }

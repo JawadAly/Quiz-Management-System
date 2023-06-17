@@ -16,8 +16,8 @@ public class databaseConnection {
       static Connection conn; 
     static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     static String url = "jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=quiz_management_db;encrypt=true;trustServerCertificate=true";
-    static String userName = "sa";
-    static String pass = "alee970095";
+    static String userName = "jawad";
+    static String pass = "jawad";
     public static Connection getConnection() throws SQLException, ClassNotFoundException{
         if(conn == null){
              //registering jdbc driver
