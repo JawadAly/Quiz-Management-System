@@ -6,10 +6,14 @@ package views;
 
 import controllers.quizImplements;
 import controllers.quizInterface;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimerTask;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.Timer;
 import models.Course;
 import models.Question;
 import models.Quiz;
@@ -38,7 +42,10 @@ public class studentQuizPanel extends javax.swing.JFrame {
     private static int questionCounter = 1;
     private static int marksCounter = 0;
     private static List<Question> questionList;
-//    private Question ques;
+    //timer vars
+    private Timer timer;
+    private static int timerCounter = 0;
+    private TimerTask timertask;
     public studentQuizPanel() {
         initComponents();
         setStdId();
@@ -75,6 +82,30 @@ public class studentQuizPanel extends javax.swing.JFrame {
         studentQuizPanel.ques3 = questionList.get(2);
         studentQuizPanel.ques4 = questionList.get(3);
         studentQuizPanel.ques5 = questionList.get(4);        
+    }
+    private void executeTimer(){
+            timer = new Timer(1000,new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    studentQuizPanel.timerCounter++;
+                    timerLbl.setText(String.valueOf(studentQuizPanel.timerCounter));
+                    //checking for timer counter and then stopping it
+                    checkTimerforStop();
+                }
+            });
+            timer.start();
+    }
+    private void checkTimerforStop(){
+        if(studentQuizPanel.timerCounter == 20){
+           timer.stop();
+           timer = null;
+           //submitting quiz when time is over
+           sumbitQuiz();
+           timerLbl.setText("00");
+           displayMarks();
+           jTabbedPane1.setSelectedIndex(6);
+           JOptionPane.showMessageDialog(null, "Your time is over and your quiz is submitted !");
+        }
     }
 //    private void displayQuiz(){
 //        Student std = new Student();
@@ -179,6 +210,10 @@ public class studentQuizPanel extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
+        btnFinalizeCourses = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        lblQuestId5 = new javax.swing.JLabel();
+        timerLbl = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -224,7 +259,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(347, 347, 347)
                         .addComponent(startBtn)))
-                .addContainerGap(391, Short.MAX_VALUE))
+                .addContainerGap(318, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,7 +334,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jLabel3)
                 .addGap(6, 6, 6)
-                .addComponent(lblQuestId, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addComponent(lblQuestId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -414,7 +449,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblQuestId1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                        .addComponent(lblQuestId1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -430,7 +465,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
                         .addComponent(ques2Opt2RadBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ques2Opt1RadBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblQuestion2, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ques2nextBtn1)
@@ -466,7 +501,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel17)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(ques2nextBtn1)
                 .addGap(47, 47, 47))
         );
@@ -550,7 +585,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
                             .addComponent(lblQuestId2)
                             .addGap(28, 28, 28)
                             .addComponent(lblQuestion3, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -564,7 +599,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(lblQuestion3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(ques3Opt1RadBtn1)
@@ -668,7 +703,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
                                 .addComponent(ques4opt3RadBtn3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(ques4opt2RadBtn3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(ques4opt1RadBtn3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -682,7 +717,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addComponent(lblQuestId3))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(ques4opt1RadBtn3)
@@ -779,7 +814,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
                             .addComponent(ques5Opt1RadBtn2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(lblQuestId4, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                        .addComponent(lblQuestId4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblQuestion5, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(106, 106, 106))))
@@ -844,61 +879,125 @@ public class studentQuizPanel extends javax.swing.JFrame {
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("marks");
 
+        btnFinalizeCourses.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnFinalizeCourses.setText("Back to Student  Panel");
+        btnFinalizeCourses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizeCoursesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(236, 236, 236)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMarks, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel30)
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnFinalizeCourses)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMarks, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel30)))
+                .addContainerGap(247, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(348, 348, 348)
                     .addComponent(jLabel10)
-                    .addContainerGap(388, Short.MAX_VALUE)))
+                    .addContainerGap(311, Short.MAX_VALUE)))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(155, 155, 155)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel8))
                     .addComponent(lblMarks, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jLabel30)))
-                .addContainerGap(225, Short.MAX_VALUE))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel30))))
+                .addGap(41, 41, 41)
+                .addComponent(btnFinalizeCourses)
+                .addContainerGap(158, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(16, 16, 16)
                     .addComponent(jLabel10)
-                    .addContainerGap(375, Short.MAX_VALUE)))
+                    .addContainerGap(377, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Result", jPanel6);
+
+        jPanel9.setBackground(new java.awt.Color(25, 118, 211));
+
+        lblQuestId5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblQuestId5.setForeground(new java.awt.Color(255, 255, 255));
+        lblQuestId5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblQuestId5.setText("Time :");
+
+        timerLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        timerLbl.setForeground(new java.awt.Color(255, 51, 51));
+        timerLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        timerLbl.setText("00");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(timerLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                        .addComponent(lblQuestId5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(10, 10, 10)))
+                .addGap(18, 18, 18))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(lblQuestId5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(timerLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(327, 327, 327))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 465, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void sumbitQuiz(){
+        //inserting quiz matks in quizAttempt table along with quiz id and stduent id by making thier specific objects
+            Quiz attemptedQuiz = new Quiz();
+            attemptedQuiz.setQuizId(studentQuizPanel.currntQuizId);
+            //assigning obtained quiz Marks
+            attemptedQuiz.setQuizObtMarks(studentQuizPanel.marksCounter);
+            //creating student object with current stdId
+            Student stdnt = new Student();
+            stdnt.setStdId(studentQuizPanel.stdId);
+            //insertion here
+            quizInterface interfc = new quizImplements();
+            interfc.addAttemptedStdntQuiz(attemptedQuiz, stdnt);
+    }
     private void ques5nextBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ques5nextBtn4ActionPerformed
         String selectedText="";
         JRadioButton[] radioButtons = {ques5Opt1RadBtn2, ques5Opt2RadBtn2, ques5Opt3RadBtn2, ques5Opt4RadBtn2};
@@ -917,19 +1016,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
             if(ques5.getAnswer().equals(selectedText)) {
                 marksCounter++;
             }
-            displayMarks();
-            jTabbedPane1.setSelectedIndex(6);
-            //inserting quiz matks in quizAttempt table along with quiz id and stduent id by making thier specific objects
-            Quiz attemptedQuiz = new Quiz();
-            attemptedQuiz.setQuizId(studentQuizPanel.currntQuizId);
-            //assigning obtained quiz Marks
-            attemptedQuiz.setQuizObtMarks(studentQuizPanel.marksCounter);
-            //creating student object with current stdId
-            Student stdnt = new Student();
-            stdnt.setStdId(studentQuizPanel.stdId);
-            //insertion here
-            quizInterface interfc = new quizImplements();
-            interfc.addAttemptedStdntQuiz(attemptedQuiz, stdnt);
+            sumbitQuiz();
         }
     }//GEN-LAST:event_ques5nextBtn4ActionPerformed
 
@@ -1055,6 +1142,9 @@ public class studentQuizPanel extends javax.swing.JFrame {
         //        quizInterface interfce = new quizImplements();
         //        questionList=interfce.displayQuizForStd(quiz);
         //        jTabbedPane1.setSelectedIndex(1);
+        
+        //starting timer
+        executeTimer();
         lblQuestId.setText(String.valueOf(questionCounter));
         populateQuestionList();//populating questions in the specified question list and then making questions objects
         jTabbedPane1.setSelectedIndex(1);
@@ -1065,6 +1155,12 @@ public class studentQuizPanel extends javax.swing.JFrame {
         ques1Opt4RadBtn.setText(studentQuizPanel.ques1.getFourthOpt());
 
     }//GEN-LAST:event_startBtnActionPerformed
+
+    private void btnFinalizeCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizeCoursesActionPerformed
+        stdntPanel stdPnl = new stdntPanel();
+        this.dispose();
+        stdPnl.setVisible(true);
+    }//GEN-LAST:event_btnFinalizeCoursesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1102,6 +1198,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFinalizeCourses;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
@@ -1145,6 +1242,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblMarks;
     private javax.swing.JLabel lblQuestId;
@@ -1152,6 +1250,7 @@ public class studentQuizPanel extends javax.swing.JFrame {
     private javax.swing.JLabel lblQuestId2;
     private javax.swing.JLabel lblQuestId3;
     private javax.swing.JLabel lblQuestId4;
+    private javax.swing.JLabel lblQuestId5;
     private javax.swing.JLabel lblQuestion1;
     private javax.swing.JLabel lblQuestion2;
     private javax.swing.JLabel lblQuestion3;
@@ -1183,5 +1282,6 @@ public class studentQuizPanel extends javax.swing.JFrame {
     private javax.swing.JRadioButton ques5Opt4RadBtn2;
     private javax.swing.JButton ques5nextBtn4;
     private javax.swing.JButton startBtn;
+    private javax.swing.JLabel timerLbl;
     // End of variables declaration//GEN-END:variables
 }
