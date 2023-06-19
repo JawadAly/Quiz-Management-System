@@ -31,9 +31,9 @@ public class adminStdVerifPanel extends javax.swing.JFrame {
     public adminStdVerifPanel() {
         initComponents();
         availStdList = new ArrayList<>();
-        displayFacultyList();
+        displayStdList();
     }
-    private void displayFacultyList(){
+    private void displayStdList(){
         stdCrudInterface interfc = new stdCrudImplements();
         availStdList = interfc.getAllStudents();
         DefaultTableModel dft = (DefaultTableModel)stdntRecTbl.getModel();
@@ -56,8 +56,13 @@ public class adminStdVerifPanel extends javax.swing.JFrame {
         stdntRecTbl = new javax.swing.JTable();
         stdApproveBtn = new javax.swing.JButton();
         delStdBtn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        btnBackToFacPanel = new javax.swing.JLabel();
+        facQuizAdditionPnlCloseBtn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(25, 118, 211));
 
         stdntRecTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,6 +78,7 @@ public class adminStdVerifPanel extends javax.swing.JFrame {
             stdntRecTbl.getColumnModel().getColumn(5).setMaxWidth(300);
         }
 
+        stdApproveBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         stdApproveBtn.setText("Approve Student");
         stdApproveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,10 +86,37 @@ public class adminStdVerifPanel extends javax.swing.JFrame {
             }
         });
 
+        delStdBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         delStdBtn.setText("Delete Student");
         delStdBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delStdBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Student Verification Panel");
+
+        btnBackToFacPanel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        btnBackToFacPanel.setForeground(new java.awt.Color(242, 242, 242));
+        btnBackToFacPanel.setText("<-");
+        btnBackToFacPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBackToFacPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackToFacPanelMouseClicked(evt);
+            }
+        });
+
+        facQuizAdditionPnlCloseBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        facQuizAdditionPnlCloseBtn.setForeground(new java.awt.Color(255, 255, 255));
+        facQuizAdditionPnlCloseBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        facQuizAdditionPnlCloseBtn.setText("X");
+        facQuizAdditionPnlCloseBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        facQuizAdditionPnlCloseBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                facQuizAdditionPnlCloseBtnMouseClicked(evt);
             }
         });
 
@@ -93,20 +126,33 @@ public class adminStdVerifPanel extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(193, Short.MAX_VALUE)
+                .addContainerGap(201, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131)
+                .addComponent(btnBackToFacPanel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(facQuizAdditionPnlCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(245, 245, 245)
                 .addComponent(delStdBtn)
-                .addGap(160, 160, 160)
+                .addGap(32, 32, 32)
                 .addComponent(stdApproveBtn)
-                .addGap(212, 212, 212))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(facQuizAdditionPnlCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBackToFacPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(stdApproveBtn)
                     .addComponent(delStdBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -128,48 +174,71 @@ public class adminStdVerifPanel extends javax.swing.JFrame {
 
     private void stdApproveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stdApproveBtnActionPerformed
         int rowIndex = stdntRecTbl.getSelectedRow();
-        int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to approve this student?", "Confirmation", JOptionPane.YES_NO_OPTION);
-        if (option==JOptionPane.YES_OPTION) {
-            TableModel tblModel = stdntRecTbl.getModel();
-        int selectedStdId = (int)stdntRecTbl.getValueAt(rowIndex,0);  
-        Student std = new Student();
-        std.setStdId(selectedStdId);
-        adminInterface interfc = new adminImplements();
-        interfc.approveStudent(std);
-        admnPanel obj = new admnPanel();
-        obj.setVisible(true);
-        this.setVisible(false);
-        }
         if(rowIndex < 0){
-            JOptionPane.showMessageDialog(null, "Please select any record!");
+            JOptionPane.showMessageDialog(null, "Please select any record to proceed!");
         }
+        else{
+            int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to approve this student?", "Confirmation", JOptionPane.YES_NO_OPTION);
+            if (option==JOptionPane.YES_OPTION) {
+                TableModel tblModel = stdntRecTbl.getModel();
+            int selectedStdId = (int)stdntRecTbl.getValueAt(rowIndex,0);  
+            Student std = new Student();
+            std.setStdId(selectedStdId);
+            adminInterface interfc = new adminImplements();
+            interfc.approveStudent(std);
+            DefaultTableModel dft = (DefaultTableModel)stdntRecTbl.getModel();
+            dft.setRowCount(0);
+            displayStdList();
+//        admnPanel obj = new admnPanel();
+//        obj.setVisible(true);
+//        this.setVisible(false);
+        }
+        
+        }
+        
     }//GEN-LAST:event_stdApproveBtnActionPerformed
 
     private void delStdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delStdBtnActionPerformed
         int rowIndex = stdntRecTbl.getSelectedRow();
-        int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this student?", "Confirmation", JOptionPane.YES_NO_OPTION);
-        if (option==JOptionPane.YES_OPTION) {
-            if(rowIndex < 0){
+        if(rowIndex < 0){
             JOptionPane.showMessageDialog(null, "Please select any record!");
         }
-            else{
+        else{
+        int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this student?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (option==JOptionPane.YES_OPTION) {
                 TableModel tblModel = stdntRecTbl.getModel();
-        int selectedStdId = (int)stdntRecTbl.getValueAt(rowIndex,0);  
-        Student std = new Student();
-        std.setStdId(selectedStdId);
-        adminInterface interfc = new adminImplements();
-        interfc.deleteStudent(std);
-        adminFacVerifPanel obj = new adminFacVerifPanel();
-        obj.setVisible(true);
-        this.setVisible(false);
-            }        
+                int selectedStdId = (int)stdntRecTbl.getValueAt(rowIndex,0);  
+                Student std = new Student();
+                std.setStdId(selectedStdId);
+                adminInterface interfc = new adminImplements();
+                interfc.deleteStudent(std);
+                DefaultTableModel dft = (DefaultTableModel)stdntRecTbl.getModel();
+                dft.setRowCount(0);
+                displayStdList();
+//              adminFacVerifPanel obj = new adminFacVerifPanel();
+//              obj.setVisible(true);
+//              this.setVisible(false);
+
+  
         }
         else if (option==JOptionPane.NO_OPTION) {
         adminFacVerifPanel obj = new adminFacVerifPanel();
         obj.setVisible(true);
         this.setVisible(false);
         }
+            }      
+        
     }//GEN-LAST:event_delStdBtnActionPerformed
+
+    private void btnBackToFacPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackToFacPanelMouseClicked
+        FacultyPanel facPnl = new FacultyPanel();
+        this.dispose();
+        facPnl.setVisible(true);
+    }//GEN-LAST:event_btnBackToFacPanelMouseClicked
+
+    private void facQuizAdditionPnlCloseBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facQuizAdditionPnlCloseBtnMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_facQuizAdditionPnlCloseBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -207,7 +276,10 @@ public class adminStdVerifPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnBackToFacPanel;
     private javax.swing.JButton delStdBtn;
+    private javax.swing.JLabel facQuizAdditionPnlCloseBtn;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton stdApproveBtn;

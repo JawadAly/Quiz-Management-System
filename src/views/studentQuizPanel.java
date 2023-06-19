@@ -140,6 +140,10 @@ public class studentQuizPanel extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         startBtn = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         ques1nextBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -240,6 +244,8 @@ public class studentQuizPanel extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Instructions");
 
+        startBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        startBtn.setForeground(new java.awt.Color(255, 51, 51));
         startBtn.setText("START QUIZ");
         startBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,28 +253,55 @@ public class studentQuizPanel extends javax.swing.JFrame {
             }
         });
 
+        jLabel31.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setText("-> Once you click START QUIZ button you will be redirected to the first question page.");
+
+        jLabel32.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel32.setText("-> You have time of 20 seconds to complete your entire quiz.");
+
+        jLabel33.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel33.setText("<< Good Luck >>");
+
+        jLabel34.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel34.setText("-> If you ran out of time your quiz will be automatically submitted and evaluted.");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(319, 319, 319)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(347, 347, 347)
-                        .addComponent(startBtn)))
-                .addContainerGap(317, Short.MAX_VALUE))
+                        .addComponent(startBtn)
+                        .addGap(178, 178, 178)
+                        .addComponent(jLabel33))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel32)
+                    .addComponent(jLabel31)
+                    .addComponent(jLabel34))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(startBtn)
-                .addGap(436, 436, 436))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel31)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel32)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel34)
+                .addGap(35, 35, 35)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel33)
+                    .addComponent(startBtn))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Instruction Panel", jPanel2);
@@ -997,6 +1030,8 @@ public class studentQuizPanel extends javax.swing.JFrame {
             //insertion here
             quizInterface interfc = new quizImplements();
             interfc.addAttemptedStdntQuiz(attemptedQuiz, stdnt);
+            //dissabling button 5
+            ques5nextBtn4.setEnabled(false);
     }
     private void ques5nextBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ques5nextBtn4ActionPerformed
         String selectedText="";
@@ -1046,6 +1081,8 @@ public class studentQuizPanel extends javax.swing.JFrame {
             ques5Opt2RadBtn2.setText(studentQuizPanel.ques5.getSecondOpt());
             ques5Opt3RadBtn2.setText(studentQuizPanel.ques5.getThirdOpt());
             ques5Opt4RadBtn2.setText(studentQuizPanel.ques5.getFourthOpt());
+            //dissabling this button
+            ques4nextBtn3.setEnabled(false);
         }
     }//GEN-LAST:event_ques4nextBtn3ActionPerformed
 
@@ -1075,6 +1112,8 @@ public class studentQuizPanel extends javax.swing.JFrame {
             ques4opt2RadBtn3.setText(studentQuizPanel.ques4.getSecondOpt());
             ques4opt3RadBtn3.setText(studentQuizPanel.ques4.getThirdOpt());
             ques4opt4RadBtn3.setText(studentQuizPanel.ques4.getFourthOpt());
+            //dissabling this button
+            ques3nextBtn2.setEnabled(false);
         }
     }//GEN-LAST:event_ques3nextBtn2ActionPerformed
 
@@ -1104,6 +1143,8 @@ public class studentQuizPanel extends javax.swing.JFrame {
             ques3Opt2RadBtn1.setText(studentQuizPanel.ques3.getSecondOpt());
             ques3Opt3RadBtn1.setText(studentQuizPanel.ques3.getThirdOpt());
             ques3Opt4RadBtn.setText(studentQuizPanel.ques3.getFourthOpt());
+            //dissabling this buuton
+            ques2nextBtn1.setEnabled(false);
         }
     }//GEN-LAST:event_ques2nextBtn1ActionPerformed
 
@@ -1133,6 +1174,8 @@ public class studentQuizPanel extends javax.swing.JFrame {
             ques2Opt2RadBtn.setText(studentQuizPanel.ques2.getSecondOpt());
             ques2Opt3RadBtn.setText(studentQuizPanel.ques2.getThirdOpt());
             ques2Opt4RadBtn.setText(studentQuizPanel.ques2.getFourthOpt());
+            //dissabling this buuton
+            ques1nextBtn.setEnabled(false);
         }
     }//GEN-LAST:event_ques1nextBtnActionPerformed
 
@@ -1228,6 +1271,10 @@ public class studentQuizPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

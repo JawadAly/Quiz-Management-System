@@ -27,7 +27,7 @@ public class stdntPanel extends javax.swing.JFrame {
      */
     public static int userOrigTblId;
     public stdntPanel() {
-        initComponents();  
+        initComponents(); 
     }
     public void setUserOriginalTableId(int originalId){   
             stdntPanel.userOrigTblId = originalId;
@@ -75,7 +75,8 @@ public class stdntPanel extends javax.swing.JFrame {
             }
         });
 
-        btnStdntCourseRegFormOpen.setText("Course Registration Panel");
+        btnStdntCourseRegFormOpen.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnStdntCourseRegFormOpen.setText("Course Registeration Panel");
         btnStdntCourseRegFormOpen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnStdntCourseRegFormOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +84,7 @@ public class stdntPanel extends javax.swing.JFrame {
             }
         });
 
+        btnStdQuizPanelOpen.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnStdQuizPanelOpen.setText("My Quizzes");
         btnStdQuizPanelOpen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnStdQuizPanelOpen.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +103,7 @@ public class stdntPanel extends javax.swing.JFrame {
             }
         });
 
+        btnShowStudentRegCourses.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnShowStudentRegCourses.setText("My Courses");
         btnShowStudentRegCourses.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnShowStudentRegCourses.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +115,7 @@ public class stdntPanel extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(181, 181, 181)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,13 +124,13 @@ public class stdntPanel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(stdntPanelCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(103, 103, 103)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addComponent(btnStdntCourseRegFormOpen)
-                .addGap(59, 59, 59)
-                .addComponent(btnShowStudentRegCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(btnStdQuizPanelOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnShowStudentRegCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnStdQuizPanelOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -139,12 +142,12 @@ public class stdntPanel extends javax.swing.JFrame {
                         .addComponent(stdntPanelCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnLogOut))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addGap(116, 116, 116)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnShowStudentRegCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnStdntCourseRegFormOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnShowStudentRegCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnStdQuizPanelOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(170, 170, 170))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

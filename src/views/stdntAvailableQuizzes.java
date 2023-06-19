@@ -61,6 +61,8 @@ public class stdntAvailableQuizzes extends javax.swing.JFrame {
         JSrollPane1 = new javax.swing.JScrollPane();
         availQuizzesTbl = new javax.swing.JTable();
         attemptQuizBtn = new javax.swing.JButton();
+        btnBackToStudentPanel = new javax.swing.JLabel();
+        stdntCourseRegPanelCloseBtn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +89,27 @@ public class stdntAvailableQuizzes extends javax.swing.JFrame {
             }
         });
 
+        btnBackToStudentPanel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        btnBackToStudentPanel.setForeground(new java.awt.Color(242, 242, 242));
+        btnBackToStudentPanel.setText("<-");
+        btnBackToStudentPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBackToStudentPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackToStudentPanelMouseClicked(evt);
+            }
+        });
+
+        stdntCourseRegPanelCloseBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        stdntCourseRegPanelCloseBtn.setForeground(new java.awt.Color(255, 255, 255));
+        stdntCourseRegPanelCloseBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stdntCourseRegPanelCloseBtn.setText("X");
+        stdntCourseRegPanelCloseBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        stdntCourseRegPanelCloseBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stdntCourseRegPanelCloseBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -98,19 +121,28 @@ public class stdntAvailableQuizzes extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(135, 135, 135)
-                        .addComponent(JSrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(164, Short.MAX_VALUE))
+                        .addComponent(JSrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 158, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(275, 275, 275)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBackToStudentPanel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stdntCourseRegPanelCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(stdntCourseRegPanelCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBackToStudentPanel)))
+                .addGap(35, 35, 35)
                 .addComponent(JSrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(attemptQuizBtn)
@@ -156,6 +188,16 @@ public class stdntAvailableQuizzes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_attemptQuizBtnActionPerformed
 
+    private void btnBackToStudentPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackToStudentPanelMouseClicked
+        stdntPanel stdPnl = new stdntPanel();
+        this.dispose();
+        stdPnl.setVisible(true);
+    }//GEN-LAST:event_btnBackToStudentPanelMouseClicked
+
+    private void stdntCourseRegPanelCloseBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stdntCourseRegPanelCloseBtnMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_stdntCourseRegPanelCloseBtnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -195,7 +237,9 @@ public class stdntAvailableQuizzes extends javax.swing.JFrame {
     private javax.swing.JScrollPane JSrollPane1;
     private javax.swing.JButton attemptQuizBtn;
     private javax.swing.JTable availQuizzesTbl;
+    private javax.swing.JLabel btnBackToStudentPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel stdntCourseRegPanelCloseBtn;
     // End of variables declaration//GEN-END:variables
 }

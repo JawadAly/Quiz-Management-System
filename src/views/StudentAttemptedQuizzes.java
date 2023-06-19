@@ -63,9 +63,10 @@ public class StudentAttemptedQuizzes extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        facQuizAdditionPnlCloseBtn = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         attemptedQuizTable = new javax.swing.JTable();
+        btnBackToStudentPanel = new javax.swing.JLabel();
+        stdntCourseRegPanelCloseBtn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Attemted Quizzes Panel");
@@ -78,17 +79,6 @@ public class StudentAttemptedQuizzes extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Student Attempted Quizzes Panel");
 
-        facQuizAdditionPnlCloseBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        facQuizAdditionPnlCloseBtn.setForeground(new java.awt.Color(255, 255, 255));
-        facQuizAdditionPnlCloseBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        facQuizAdditionPnlCloseBtn.setText("X");
-        facQuizAdditionPnlCloseBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        facQuizAdditionPnlCloseBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                facQuizAdditionPnlCloseBtnMouseClicked(evt);
-            }
-        });
-
         attemptedQuizTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -99,32 +89,56 @@ public class StudentAttemptedQuizzes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(attemptedQuizTable);
 
+        btnBackToStudentPanel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        btnBackToStudentPanel.setForeground(new java.awt.Color(242, 242, 242));
+        btnBackToStudentPanel.setText("<-");
+        btnBackToStudentPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBackToStudentPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackToStudentPanelMouseClicked(evt);
+            }
+        });
+
+        stdntCourseRegPanelCloseBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        stdntCourseRegPanelCloseBtn.setForeground(new java.awt.Color(255, 255, 255));
+        stdntCourseRegPanelCloseBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stdntCourseRegPanelCloseBtn.setText("X");
+        stdntCourseRegPanelCloseBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        stdntCourseRegPanelCloseBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stdntCourseRegPanelCloseBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(107, Short.MAX_VALUE)
+                .addContainerGap(105, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(facQuizAdditionPnlCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(btnBackToStudentPanel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stdntCourseRegPanelCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102))))
+                        .addGap(104, 104, 104))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(facQuizAdditionPnlCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stdntCourseRegPanelCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBackToStudentPanel))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,9 +156,15 @@ public class StudentAttemptedQuizzes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void facQuizAdditionPnlCloseBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facQuizAdditionPnlCloseBtnMouseClicked
+    private void btnBackToStudentPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackToStudentPanelMouseClicked
+        stdntPanel stdPnl = new stdntPanel();
+        this.dispose();
+        stdPnl.setVisible(true);
+    }//GEN-LAST:event_btnBackToStudentPanelMouseClicked
+
+    private void stdntCourseRegPanelCloseBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stdntCourseRegPanelCloseBtnMouseClicked
         System.exit(0);
-    }//GEN-LAST:event_facQuizAdditionPnlCloseBtnMouseClicked
+    }//GEN-LAST:event_stdntCourseRegPanelCloseBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -183,9 +203,10 @@ public class StudentAttemptedQuizzes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable attemptedQuizTable;
-    private javax.swing.JLabel facQuizAdditionPnlCloseBtn;
+    private javax.swing.JLabel btnBackToStudentPanel;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel stdntCourseRegPanelCloseBtn;
     // End of variables declaration//GEN-END:variables
 }

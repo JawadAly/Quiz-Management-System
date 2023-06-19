@@ -30,11 +30,15 @@ public class admnPanel extends javax.swing.JFrame {
         courseRegtPnlBtn = new javax.swing.JButton();
         stdntVerifPanelBtn = new javax.swing.JButton();
         facultyVerifPanelBtn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        facQuizAdditionPnlCloseBtn = new javax.swing.JLabel();
+        btnLogOut = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(25, 118, 211));
 
+        courseRegtPnlBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         courseRegtPnlBtn.setText("Course Registration Panel");
         courseRegtPnlBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -42,6 +46,7 @@ public class admnPanel extends javax.swing.JFrame {
             }
         });
 
+        stdntVerifPanelBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         stdntVerifPanelBtn.setText("Student Verification Panel");
         stdntVerifPanelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,10 +54,37 @@ public class admnPanel extends javax.swing.JFrame {
             }
         });
 
+        facultyVerifPanelBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         facultyVerifPanelBtn.setText("Faculty Verification Panel");
         facultyVerifPanelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facultyVerifPanelBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Admin Panel");
+
+        facQuizAdditionPnlCloseBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        facQuizAdditionPnlCloseBtn.setForeground(new java.awt.Color(255, 255, 255));
+        facQuizAdditionPnlCloseBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        facQuizAdditionPnlCloseBtn.setText("X");
+        facQuizAdditionPnlCloseBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        facQuizAdditionPnlCloseBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                facQuizAdditionPnlCloseBtnMouseClicked(evt);
+            }
+        });
+
+        btnLogOut.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnLogOut.setForeground(new java.awt.Color(242, 242, 242));
+        btnLogOut.setText("LogOut");
+        btnLogOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogOutMouseClicked(evt);
             }
         });
 
@@ -61,23 +93,36 @@ public class admnPanel extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107)
+                .addComponent(btnLogOut)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(facQuizAdditionPnlCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
                 .addComponent(courseRegtPnlBtn)
-                .addGap(74, 74, 74)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(stdntVerifPanelBtn)
-                .addGap(74, 74, 74)
+                .addGap(18, 18, 18)
                 .addComponent(facultyVerifPanelBtn)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(196, 196, 196)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(courseRegtPnlBtn)
-                    .addComponent(stdntVerifPanelBtn)
-                    .addComponent(facultyVerifPanelBtn))
-                .addContainerGap(224, Short.MAX_VALUE))
+                    .addComponent(facQuizAdditionPnlCloseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogOut))
+                .addGap(116, 116, 116)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(stdntVerifPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(facultyVerifPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(courseRegtPnlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -111,6 +156,16 @@ public class admnPanel extends javax.swing.JFrame {
         obj.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_stdntVerifPanelBtnActionPerformed
+
+    private void facQuizAdditionPnlCloseBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facQuizAdditionPnlCloseBtnMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_facQuizAdditionPnlCloseBtnMouseClicked
+
+    private void btnLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogOutMouseClicked
+        login lgn = new login();
+        this.dispose();
+        lgn.setVisible(true);
+    }//GEN-LAST:event_btnLogOutMouseClicked
 
     /**
      * @param args the command line arguments
@@ -148,8 +203,11 @@ public class admnPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnLogOut;
     private javax.swing.JButton courseRegtPnlBtn;
+    private javax.swing.JLabel facQuizAdditionPnlCloseBtn;
     private javax.swing.JButton facultyVerifPanelBtn;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton stdntVerifPanelBtn;
     // End of variables declaration//GEN-END:variables
