@@ -27,6 +27,9 @@ import models.VisitingFaculty;
  * @author ALI
  */
 public class facCrudImplements implements facCrudInterface{
+
+    
+    
     @Override
     public void visitfacInsert(VisitingFaculty vfac) {
         boolean alrdyRegtd = false;
@@ -95,8 +98,6 @@ public class facCrudImplements implements facCrudInterface{
             exp.printStackTrace();
 //            JOptionPane.showMessageDialog(null,"There was an error executing insert operation for Faculty.");
         }
-            
-            
     }
     @Override
     public int getPermfacId(PermFaculty pfac){
@@ -180,4 +181,31 @@ public class facCrudImplements implements facCrudInterface{
         }
         return stdntsResultList;
     }
+
+    @Override
+    public List<Faculty> getAllFaculty() {
+        List<Faculty> facList  = new ArrayList<>();  
+    try{
+        Connection conn = databaseConnection.getConnection();
+        String Query = "SELECT facId, facName,facEmail,facPhone,facGender,facType,facApprovalStatus FROM facTbl";
+        PreparedStatement ps = conn.prepareStatement(Query);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+           Faculty fac= new Faculty();
+           fac.setFacId(rs.getInt("facId"));
+           fac.setFacName(rs.getString("facName"));
+           fac.setFacEmail(rs.getString("facEmail"));
+           fac.setFacPhone(rs.getString("facPhone"));
+           fac.setFacGender(rs.getString("facGender"));
+           fac.setFacStatus(rs.getString("facType"));
+           fac.setFacApprovalStatus(rs.getString("facApprovalStatus"));
+           facList.add(fac);
+        }
+    }
+    catch(Exception exp){
+        exp.printStackTrace();
+    }
+    return facList;
+    }
+    
 }

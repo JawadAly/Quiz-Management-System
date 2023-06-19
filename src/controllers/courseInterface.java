@@ -15,4 +15,5 @@ import models.Student;
 public interface courseInterface {
 public List<Course> getAllCoursesList();    
 public void registerStdCourses(Student std);
+public void registerCourse(Course course);
 }

@@ -119,4 +119,30 @@ public class stdCrudImplements implements stdCrudInterface{
         }
         return myCoursesList;
     }
+
+    @Override
+    public List<Student> getAllStudents() {
+        List<Student> stdList  = new ArrayList<>();  
+    try{
+        Connection conn = databaseConnection.getConnection();
+        String Query = "SELECT std_id, stdName,stdEmail,stdPhone,stdntGender,stdntApprovalStatus FROM stdntTbl";
+        PreparedStatement ps = conn.prepareStatement(Query);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+           Student std= new Student();
+           std.setStdId(rs.getInt("std_id"));
+           std.setStdName(rs.getString("stdName"));
+           std.setStdEmail(rs.getString("stdEmail"));
+           std.setStdPhone(rs.getString("stdPhone"));
+           std.setStdGender(rs.getString("stdntGender"));
+           std.setStdApprovStatus(rs.getString("stdntApprovalStatus"));
+           stdList.add(std);
+        }
+    }
+    catch(Exception exp){
+        exp.printStackTrace();
+    }
+    return stdList;
+    }
+    
 }

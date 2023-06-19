@@ -15,6 +15,7 @@ public class Faculty {
     private String facPhone;
     private String facGender;
     private String facStatus;
+    private String facApprovalStatus;
 
     public Faculty(){}
     
@@ -26,6 +27,14 @@ public class Faculty {
         this.facStatus = facStatus;
     }
 
+    public String getFacApprovalStatus() {
+        return facApprovalStatus;
+    }
+
+    public void setFacApprovalStatus(String facApprovalStatus) {
+        this.facApprovalStatus = facApprovalStatus;
+    }
+    
     public int getFacId() {
         return facId;
     }

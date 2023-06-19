@@ -266,12 +266,16 @@ public class login extends javax.swing.JFrame {
                   checkFacVerificationStatus(userOrigTblId);
              }
              else if(userLoginStatusId == 2){
-                 //moving to faculty panel 
+                 //moving to admin panel 
+                
                 JOptionPane.showMessageDialog(null,"Congratulations you are successfully logged in as an Admin !!" );
+                admnPanel obj = new admnPanel();
+                obj.setVisible(true);
+                this.setVisible(false);
              }
              else{
-                 //moving to admin panel
-                JOptionPane.showMessageDialog(null,"Invalid Credentials !" );
+                //Invalid Credentials
+                 JOptionPane.showMessageDialog(null,"Invalid Credentials !" );
              }
 
         }

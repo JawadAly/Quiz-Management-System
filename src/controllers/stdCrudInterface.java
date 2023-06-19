@@ -17,6 +17,7 @@ public interface stdCrudInterface {
     public int getStdId(Student std);
     public int getStdVerifStatus(Student std);
     public List<Course> loadStdCourses(Student std);
+    public List<Student> getAllStudents();
 //    public void stdStruckOff(Student std);
 //    public List<Student> getRegtdStdntsList();
 }

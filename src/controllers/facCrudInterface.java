@@ -17,4 +17,5 @@ public interface facCrudInterface {
     public int getVisitFacId(VisitingFaculty vfac);
     public int getFacVerificationStatus(Faculty faculty);
     public List<StudentsResult> getStdntsResultList();
+    public List<Faculty> getAllFaculty();
 }

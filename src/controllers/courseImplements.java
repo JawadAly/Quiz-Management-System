@@ -66,4 +66,32 @@ public void registerStdCourses(Student std){
             exp.printStackTrace();
         }
     }
+
+    @Override
+    public void registerCourse(Course course) {
+        try{
+            Connection conn = databaseConnection.getConnection();
+            String query = "SELECT courseTitle FROM courseTbl WHERE courseTitle=?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1,course.getCourseTitle());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null,"The course you specified is already registered.");
+            }
+            else{
+                String query1 = "INSERT INTO courseTbl VALUES (?,?,?)";
+                PreparedStatement ps1  = conn.prepareStatement(query1);
+                ps1.setString(1,course.getCourseTitle());
+                ps1.setInt(2,course.getCourseMarks());
+                ps1.setInt(3,course.getCourseCreditHrs());
+                ps1.executeUpdate();
+                JOptionPane.showMessageDialog(null,""+course.getCourseTitle()+" course is successfully registered!");
+
+            }
+        }
+        catch(Exception exp){
+           JOptionPane.showMessageDialog(null,"Error while registering course");
+        }
+    }
+    
 }

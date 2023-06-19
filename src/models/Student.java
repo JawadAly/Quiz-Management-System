@@ -16,16 +16,32 @@ public class Student {
     private String stdEmail;
     private String stdPhone;
     private String stdGender;
+    private String stdApprovStatus;
     private List<Course> stdCourses;
     
     public Student(){}
-    
     public Student(String stdName,String stdEmail,String stdPhone,String stdGender){
             this.stdName = stdName;
             this.stdEmail = stdEmail;
             this.stdPhone = stdPhone;
             this.stdGender = stdGender;
         }
+    public Student(String stdName,String stdEmail,String stdPhone,String stdGender, String StdApprovStatus){
+            this.stdName = stdName;
+            this.stdEmail = stdEmail;
+            this.stdPhone = stdPhone;
+            this.stdGender = stdGender;
+            this.stdApprovStatus = StdApprovStatus;
+        }
+
+    public String getStdApprovStatus() {
+        return stdApprovStatus;
+    }
+
+    public void setStdApprovStatus(String stdApprovStatus) {
+        this.stdApprovStatus = stdApprovStatus;
+    }
+    
     public String getStdName() {
         return stdName;
     }
